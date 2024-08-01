@@ -1,0 +1,46 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Home - Dashboard{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Knowledge Center Dashboard</h1>
+</header>
+<div class="container">
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+    </div>
+    <div class="section quick-access">
+        <h2>Quick Access</h2>
+        <ul>
+            <li><a href="{% url 'notes' %}">Notes</a></li>
+            <li><a href="{% url 'articles' %}">Articles</a></li>
+            <li><a href="{% url 'recent_documents' %}">Recent Documents</a></li>
+        </ul>
+    </div>
+    <div class="section recent-activity">
+        <h2>Recent Activity</h2>
+        <ul>
+            <li>Note 1 - Updated 1 hour ago</li>
+            <li>Article 2 - Added yesterday</li>
+            <li>Document 3 - Edited last week</li>
+        </ul>
+    </div>
+    <div class="section categories">
+        <h2>Categories</h2>
+        <ul>
+            <li><a href="#">Category 1</a></li>
+            <li><a href="#">Category 2</a></li>
+            <li><a href="#">Category 3</a></li>
+        </ul>
+    </div>
+    <div class="section notifications">
+        <h2>Notifications</h2>
+        <p>No new notifications</p>
+    </div>
+    <div class="section help-support">
+        <h2>Help and Support</h2>
+        <p><a href="{% url 'help_support' %}">View Help Documents</a> | <a href="#">Contact Support</a></p>
+    </div>
+</div>
+{% endblock %}

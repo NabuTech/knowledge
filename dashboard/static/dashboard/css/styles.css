@@ -1,0 +1,99 @@
+/* dashboard/static/dashboard/css/styles.css */
+
+:root {
+    --primary-color: #00FF00;
+    --secondary-color: #000000;
+    --accent-color: #FF00FF;
+    --text-color: #00FF00;
+    --background-color: #000000;
+    --header-background: #333333;
+    --header-text-color: #00FF00;
+    --section-background: #1a1a1a;
+    --section-border: #00FF00;
+    --link-color: #FF00FF;
+    --font-family: 'IBM Plex Mono', monospace;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--header-background);
+    color: var(--header-text-color);
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+}
+
+.notes-layout {
+    display: flex;
+}
+
+.sidebar {
+    width: 25%;
+    background-color: var(--section-background);
+    padding: 15px;
+    margin-right: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+}
+
+.sidebar a.active {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.main-content {
+    flex: 1;
+    background-color: var(--section-background);
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.main-content h2 {
+    margin-top: 0;
+}
+
+.main-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.main-content li {
+    margin-bottom: 20px;
+}
+
+.main-content h3 {
+    margin: 0;
+}

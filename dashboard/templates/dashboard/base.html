@@ -1,0 +1,13 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap">
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/styles.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block title %}{{ note.title }}{% endblock %}
+
+{% block content %}
+<header>
+    <h1>{{ note.title }}</h1>
+</header>
+<div class="container">
+    <article>
+        <p>{{ note.content }}</p>
+        <small>Category: {{ note.category }}</small>
+    </article>
+    <a href="{% url 'notes' %}?category={{ note.category }}">Back to Notes</a>
+</div>
+{% endblock %}

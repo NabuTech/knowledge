@@ -1,0 +1,59 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block title %}Notes{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Notes</h1>
+</header>
+<div class="container">
+    <form method="get" action="{% url 'notes' %}">
+        <input type="hidden" name="category" value="{{ selected_category }}">
+        <input type="text" name="q" placeholder="Search notes..." value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
+    <div class="notes-layout">
+        <aside class="sidebar">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="{% url 'notes' %}?category=All Notes" {% if selected_category == 'All Notes' %}class="active"{% endif %}>All Notes</a></li>
+                {% for category in categories %}
+                    <li><a href="{% url 'notes' %}?category={{ category }}" {% if selected_category == category %}class="active"{% endif %}>{{ category }}</a></li>
+                {% endfor %}
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>{{ selected_category }}</h2>
+            <ul>
+                {% for note in notes %}
+                    <li>
+                        <h3><a href="{% url 'note_detail' note.id %}">{{ note.title }}</a></h3>
+                        <p>{{ note.content }}</p>
+                        <small>Category: {{ note.category }}</small>
+                    </li>
+                {% empty %}
+                    <li>No notes found.</li>
+                {% endfor %}
+            </ul>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if notes.has_previous %}
+                        <a href="?category={{ selected_category }}&q={{ query }}&page=1">&laquo; first</a>
+                        <a href="?category={{ selected_category }}&q={{ query }}&page={{ notes.previous_page_number }}">previous</a>
+                    {% endif %}
+                    
+                    <span class="current">
+                        Page {{ notes.number }} of {{ notes.paginator.num_pages }}.
+                    </span>
+                    
+                    {% if notes.has_next %}
+                        <a href="?category={{ selected_category }}&q={{ query }}&page={{ notes.next_page_number }}">next</a>
+                        <a href="?category={{ selected_category }}&q={{ query }}&page={{ notes.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
