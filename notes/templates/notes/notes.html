@@ -8,7 +8,7 @@
     <h1>Notes</h1>
 </header>
 <div class="container">
-    <form method="get" action="{% url 'notes' %}">
+    <form method="get" action="{% url 'list_notes' %}">
         <input type="hidden" name="category" value="{{ selected_category }}">
         <input type="text" name="q" placeholder="Search notes..." value="{{ query }}">
         <button type="submit">Search</button>
@@ -17,9 +17,9 @@
         <aside class="sidebar">
             <h2>Categories</h2>
             <ul>
-                <li><a href="{% url 'notes' %}?category=All Notes" {% if selected_category == 'All Notes' %}class="active"{% endif %}>All Notes</a></li>
+                <li><a href="{% url 'list_notes' %}?category=All Notes" {% if selected_category == 'All Notes' %}class="active"{% endif %}>All Notes</a></li>
                 {% for category in categories %}
-                    <li><a href="{% url 'notes' %}?category={{ category }}" {% if selected_category == category %}class="active"{% endif %}>{{ category }}</a></li>
+                    <li><a href="{% url 'list_notes' %}?category={{ category }}" {% if selected_category == category %}class="active"{% endif %}>{{ category }}</a></li>
                 {% endfor %}
             </ul>
         </aside>
@@ -28,9 +28,7 @@
             <ul>
                 {% for note in notes %}
                     <li>
-                        <h3><a href="{% url 'note_detail' note.id %}">{{ note.title }}</a></h3>
-                        <p>{{ note.content }}</p>
-                        <small>Category: {{ note.category }}</small>
+                        <h3><a href="{% url 'note_detail' note.category note.title %}">{{ note.title }}</a></h3>
                     </li>
                 {% empty %}
                     <li>No notes found.</li>

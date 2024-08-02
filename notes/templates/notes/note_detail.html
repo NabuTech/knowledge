@@ -9,9 +9,9 @@
 </header>
 <div class="container">
     <article>
-        <p>{{ note.content }}</p>
+        <div>{{ note.content|safe }}</div>
         <small>Category: {{ note.category }}</small>
     </article>
-    <a href="{% url 'notes' %}?category={{ note.category }}">Back to Notes</a>
+    <a href="{% url 'list_notes' %}?category={{ note.category }}">Back to Notes</a>
 </div>
 {% endblock %}
