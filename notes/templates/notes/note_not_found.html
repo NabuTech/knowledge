@@ -1,0 +1,14 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block title %}Note Not Found{% endblock %}
+
+{% block content %}
+<header>
+    <h1>Note Not Found</h1>
+</header>
+<div class="container">
+    <p>The note "{{ filename }}" could not be found.</p>
+    <a href="{% url 'list_notes' %}">Back to Notes</a>
+</div>
+{% endblock %}
